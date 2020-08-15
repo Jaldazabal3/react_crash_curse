@@ -11,12 +11,6 @@ export class TodoItem extends Component {
     }
   } 
 
-  markComplete = (e) => {
-    console.log(e.title);
-    e.completed = !e.completed;
-    console.log(e.title);
-  }
-
   render() {
     const { id, title } = this.props.todoItem;
     return (
@@ -27,6 +21,7 @@ export class TodoItem extends Component {
             onChange={this.props.markComplete.bind(this, id)}
           />
           { title }
+          <button style={deleteItemBtn} onClick={this.props.deleteItem.bind(this, id)}>x</button>
         </p>
       </div>
     )
@@ -35,6 +30,16 @@ export class TodoItem extends Component {
 
 TodoItem.propTypes = {
   todoItem: PropTypes.object.isRequired
+}
+
+const deleteItemBtn = {
+  backgroundColor: '#ff0000',
+  color: '#ffffff',
+  border: NamedNodeMap,
+  padding: '5px 10px',
+  borderRadius: '50%',
+  cursor: 'pointer',
+  marginLeft: '20px'
 }
 
 export default TodoItem
